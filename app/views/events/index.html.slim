@@ -1,0 +1,23 @@
+#container
+  h1 Events
+
+  table.table
+      tr.tablehead
+        td Title
+        td Category
+        td Date
+        td Show
+        td Edit
+        td Delete
+        
+      - @events.each do |e|
+        tr
+          td = link_to e.title, event_url(e)
+          td #{e.category}
+          td #{e.date}
+          td = link_to "Show", event_url(e)
+          td = link_to "Edit", edit_event_url(e)
+          td = link_to "Delete", event_url(e), method: :delete, confirm: "Are you sure?"
+
+
+

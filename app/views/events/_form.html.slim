@@ -1,0 +1,15 @@
+= form_for @event do |f|
+  p
+    = f.label :title
+    br
+    = f.text_field :title
+  p
+    = f.label :category
+    br
+    = f.select :category, @category_types
+  p
+    = f.label :date
+    br
+    = f.date_field :date
+  p
+    = f.submit
