@@ -13,20 +13,22 @@ class EventsController < ApplicationController
   # Form for adding a new event (in HTML)
   def new
     @event = Event.new
-    @category_types = Event.category_types
+    @categories = Category.all.entries
+    @venues = Venue.all.entries
   end
 
   # POST to this to create a new event, then redirect to show
   def create
     @event = Event.create(event_params)
-    @category_types = Event.category_types
+    @categories = Category.all.entries
     redirect_to event_url(@event)
   end
   
   # Form for updating an event with ID = params[:id] (in HTML)
   def edit
     @event = Event.find_by(id: params[:id])
-    @category_types = Event.category_types
+    @categories = Category.all.entries
+    @venues = Venue.all.entries
   end
 
   # PUT or PATCH to this to update event with ID = params[:id]
@@ -52,7 +54,7 @@ class EventsController < ApplicationController
   
   def event_params
     params.require(:event).permit(
-      :title,:category,:date
+      :title,:category,:start_date,:end_date,:price,:venue,:recommended
     )
   end
 

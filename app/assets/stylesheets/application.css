@@ -16,21 +16,21 @@
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
-body {
+/*body {
 	font-family: helvetica, arial, sans-serif;
 	font-size:13px;
 	}
 
 h1 {
 	font-family: helvetica, arial, sans-serif;
-	}
+	}*/
 
-#container {
+/*#container {
 	background-color: #FFFFFF;
 	width: 800px;
 	margin-left: auto;
 	margin-right: auto;
-	}
+	}*/
 
 /*table {
 	width: 800px;

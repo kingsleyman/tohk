@@ -1,0 +1,24 @@
+#container
+  h1 Venues
+
+  table.table
+      tr.tablehead
+        td Name
+        td District
+        td Address
+        / td Map Embed Code
+        td Website
+        td Phone
+        td Edit
+        td Delete
+        
+      - @venues.each do |v|
+        tr
+          td = link_to v.name, venue_url(v)
+          td #{v.district}
+          td #{v.address} 
+          / td #{v.map_code.to_s.html_safe}
+          td #{v.website}
+          td #{v.phone}
+          td = link_to "Edit", edit_venue_url(v)
+          td = link_to "Delete", venue_url(v), method: :delete, confirm: "Are you sure?"

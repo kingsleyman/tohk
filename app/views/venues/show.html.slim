@@ -1,0 +1,24 @@
+#container
+
+h3 Venue name:
+h3 = @venue.name
+
+br
+p District 
+= @venue.district
+br
+p Address
+= @venue.address
+br
+p Phone
+= @venue.phone
+br
+p Website
+= @venue.website
+
+p Google maps embed code
+= @venue.map_code.to_s.html_safe
+
+
+
+

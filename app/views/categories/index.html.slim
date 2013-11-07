@@ -1,0 +1,16 @@
+#container
+  h1 Categories
+
+  table.table
+      tr.tablehead
+        td Name
+        td Subcategories
+
+        
+      - @categories.each do |c|
+        tr
+          td = link_to c.name, category_url(c)
+          td #{c.subcategory}
+
+      
+         

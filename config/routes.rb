@@ -1,8 +1,22 @@
 Tohk::Application.routes.draw do
 
-  root 'events#index'
+  root 'home#index'
 
   resources :events
+  resources :admins
+  resources :venues
+  resources :categories
+  resources :home
+
+  scope '/admin' do
+    resources :events
+  end
+
+  # namespace :admin do
+  #   resources :events
+  # end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

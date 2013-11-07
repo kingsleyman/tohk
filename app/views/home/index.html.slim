@@ -1,0 +1,32 @@
+#container
+  h1 Homepage
+
+  / table.table
+  /     tr.tablehead
+  /       / td Event ID
+  /       td Title
+  /       td Category
+  /       td Start date
+  /       td End date
+  /       td Date created
+  /       td Last modified
+  /       td Venue
+  /       td Price
+  /       td Recommended
+  /       td Edit
+  /       td Delete
+        
+  /     - @events.each do |e|
+  /       tr
+  /         / td
+  /         td = link_to e.title, event_url(e)
+  /         td #{e.category.try(:name)}
+  /         td #{e.start_date}
+  /         td #{e.end_date}
+  /         td #{e.created_at}
+  /         td #{e.updated_at}
+  /         td #{e.venue.try(:name)}
+  /         td #{e.price}
+  /         td #{e.recommended}
+  /         td = link_to "Edit", edit_event_url(e)
+  /         td = link_to "Delete", event_url(e), method: :delete, confirm: "Are you sure?"
