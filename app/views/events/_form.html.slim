@@ -24,6 +24,11 @@
     br
     = f.text_field :price
   p
+    = f.label :pictures
+    br
+    = f.fields_for :pictures, @event.pictures do |picture_form|
+      = picture_form.file_field :image
+  p
     = f.label :recommended
     br
     = f.check_box :recommended

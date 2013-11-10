@@ -8,6 +8,7 @@ Tohk::Application.routes.draw do
   resources :categories
   resources :home
 
+
   scope '/admin' do
     resources :events
   end
@@ -15,8 +16,9 @@ Tohk::Application.routes.draw do
   # namespace :admin do
   #   resources :events
   # end
-
-
+  
+  # match "/images/uploads/*path" => "gridfs#serve"
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

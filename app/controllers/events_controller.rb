@@ -1,9 +1,28 @@
 class EventsController < ApplicationController
 
   # List all events (show table of persons in HTML)
+  
+
+  # def avatar
+  #   content = @user.avatar.read
+  #   if stale?(etag: content, last_modified: @user.updated_at.utc, public: true)
+  #     send_data content, type: @user.avatar.file.content_type, disposition: "inline"
+  #     expires_in 0, public: true
+  #   end
+  # end
+
+
   def index
-    @events = Event.all.entries
+    
+
+    sortable_column_order do |column, direction|
+        @events = Event.sort_by(column, direction)
+    end
+
+    @events ||= Event.order_by('created_at desc').all.desc(:count)
+
   end
+
 
   # Show detail for an event with ID = params[:id] (in HTML)
   def show
@@ -15,6 +34,7 @@ class EventsController < ApplicationController
     @event = Event.new
     @categories = Category.all.entries
     @venues = Venue.all.entries
+    @event.pictures.build
   end
 
   # POST to this to create a new event, then redirect to show
@@ -53,9 +73,9 @@ class EventsController < ApplicationController
   private
   
   def event_params
-    params.require(:event).permit(
-      :title,:category,:start_date,:end_date,:price,:venue,:recommended
-    )
+    params.require(:event).permit([
+      :title,:category,:start_date,:end_date,:price,:venue,:recommended,{pictures_attributes: [:id, :image]}
+    ])
   end
 
 

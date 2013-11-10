@@ -4,23 +4,26 @@
   table.table
       tr.tablehead
         / td Event ID
-        td Title
+        td = sortable_column "Title"
+        / td Title
         td Category
         td Start date
         td End date
-        td Date created
+        td = sortable_column "Date created"
         td Last modified
         td Venue
         td District
         td Price (HKD)
         td Recommended
+        td Published
         td Edit
         td Delete
         
       - @events.each do |e|
         tr
           / td
-          td = link_to e.title, event_url(e)
+          / td = link_to e.title, event_url(e)
+          td = link_to h(e.title), event_url(e)
           td = link_to e.category.name, category_url(e)
           td #{e.start_date}
           td #{e.end_date}
@@ -30,5 +33,6 @@
           td #{e.venue.district}
           td #{e.price}
           td #{e.recommended}
+          td 
           td = link_to "Edit", edit_event_url(e)
           td = link_to "Delete", event_url(e), method: :delete, confirm: "Are you sure?"
